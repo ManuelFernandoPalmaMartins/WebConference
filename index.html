@@ -13,8 +13,8 @@
 <title>Document</title>
 </head>
 <body>
+    <!-- Barra de navegação -->
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <!-- Barra de navegação -->
         <a class="navbar-brand " href="#page-top">WebConference</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,8 +37,8 @@
             </ul>
         </div>
     </nav>
+    <!-- Imagem principal e botão de inserção na conferência -->
     <header class="masthead">
-        <!-- Imagem principal e botão de inserção na conferência -->
         <div class="container">
             <div class="intro-text">
                 <!-- Título -->
@@ -49,8 +49,8 @@
             </div>
         </div>
     </header>
+    <!-- Informação básica sobre a conferência -->
     <section id="about">
-        <!-- Informação básica sobre a conferência -->
         <div class="container">
             <div class="row">
                 <!-- Título e texto principal -->
@@ -82,10 +82,31 @@
             </div>
         </div>
     </section>
-    <section id="speakers"><!-- Informação sobre os oradores da conferência --></section>
-    <section id="sponsors"><!-- Informação sobre os sponsors da conferência --></section>
-    <section id="contacts"><!-- Formulário para contactos e mapa --></section>
-    <footer><!-- Links para as redes sociais e copyright --></footer>
+    <!-- Informação sobre os oradores da conferência -->
+    <section id="speakers" class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                        <h2 class="section-heading text-uppercase">Oradores</h2>
+                        <h3 class="section-subheading text-muted">Especialistas internacionais do mundo da Web.</h3>
+                </div>
+            </div>
+            <div id="renderSpeakers" class="row">
+                <!-- Conteúdo a ser injetado via JavaScript -->
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p class="large text-muted">Oradores de grande qualidade que irão partilhar as últimas tendências do mundo do desenvolvimento para a Web!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Informação sobre os sponsors da conferência -->
+    <section id="sponsors"></section>
+    <!-- Formulário para contactos e mapa -->
+    <section id="contacts"></section>
+    <!-- Links para as redes sociais e copyright -->
+    <footer></footer>
 <!-- Bootstrap core JavaScript -->
 <script src="js/jquery-3.3.1.slim.min.js"></script>
 <script src="js/popper.min.js"></script>
