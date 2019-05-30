@@ -112,3 +112,22 @@ btnRegister.addEventListener("click", function() {
     })
   }
 })();
+/*
+  Get sponsors from server
+*/
+( async () => {
+  const renderSponsors = document.getElementById("renderSponsors")
+  let txtSponsors = ""
+  const response = await fetch(`${urlBase}/conferences/1/sponsors`)
+  const sponsors = await response.json()
+
+  for (const sponsor of sponsors) {
+    txtSponsors += `
+    <div class="col-md-3 col-sm-6">
+      <a href="#" target="_blank">
+        <img class="img-fluid d-block mx-auto" src="${sponsor.logo}" alt="${sponsor.nome}">
+      </a>
+    </div>`
+  }  
+  renderSponsors.innerHTML = txtSponsors
+})();
