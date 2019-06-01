@@ -131,3 +131,30 @@ btnRegister.addEventListener("click", function() {
   }  
   renderSponsors.innerHTML = txtSponsors
 })();
+/*
+  Post user messages to the server
+*/
+const contactForm = document.getElementById("contactForm")
+contactForm.addEventListener("submit", async function() {
+  const name = document.getElementById("name")
+  const email = document.getElementById("email")
+  const subject = document.getElementById("message")
+  const response = await fetch(`${urlBase}/conferences/1/contacts/emails`, {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },          
+    method: "POST",
+    body: `email=${email}&name=${name}&subject=${message}`
+  })
+  const result = await response.json()
+  // What to do with the result?
+  if (result.value.subject) {
+    swal("Envio de messagem",result.value.message.pt,"sucesso")
+  } else {
+    // Exibir modal com o erro
+  }
+});
+
+
+
+
