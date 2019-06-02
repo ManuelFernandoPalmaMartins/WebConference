@@ -10,31 +10,46 @@
 <link rel="stylesheet" href="css/webconf.css">
 <!-- Custom fonts for this template -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<!-- Custom fonts for google maps -->
+<link rel="stylesheet" href="css/googleapis_Montserrat.css" type="text/css">
+<link rel="stylesheet" href="css/googleapis_Kaushan.css" type="text/css">
+<link rel="stylesheet" href="css/googleapis_Droid.css" type="text/css">
+<link rel="stylesheet" href="css/googleapis_Roboto.css" type="text/css">
+<style>
+    #googleMap {
+        width: 100%; /* Span the entire width of the screen */
+        height: 400px; /* Set the height to 400 pixels */
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%); /* Change the color of the map to black and white */
+    }
+</style>
 <title>Document</title>
 </head>
-<body>
+<body id="page-top">
     <!-- Barra de navegação -->
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <a class="navbar-brand " href="#page-top">WebConference</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="navbarResponsive" class="collapse navbar-collapse">
-            <!-- Items de navegação -->
-            <ul class="navbar-nav text-uppercase ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#sobre">sobre</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#speakers">speakers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#sponsors">sponsors</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contacts">contacts</a>
-                </li>
-            </ul>
+        <div class="container">
+            <a class="navbar-brand " href="#page-top">WebConference</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarResponsive" class="collapse navbar-collapse">
+                <!-- Items de navegação -->
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#speakers">speakers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sponsors">sponsors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">contacts</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <!-- Imagem principal e botão de inserção na conferência -->
@@ -163,15 +178,69 @@
         </div>
     </section>
     <!-- Links para as redes sociais e copyright -->
-    <footer></footer>
-<!-- Bootstrap core JavaScript -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<!-- Plugin JavaScript -->
-<script src="js/sweetalert2.all.min.js"></script>
-<!-- Custom scripts for this template -->
-<script src="js/webconf.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcYng9pBfj_LmDthyiydpfyy3bftchOmg&callback=myMap"></script>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Informação sobre copyright -->
+                    <span class="copyright">Copyright &copy; WebConference 2018</span>
+                </div>
+                <div class="col-md-6">
+                    <!-- Ícones com links para as redes siciais -->
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>                       
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Modal para autenticação -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Entrar na Área privada</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email"/><br>
+                            <input type="password" class="form-control" placeholder="Password" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Entrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="js/sweetalert2.all.min.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="js/webconf.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcYng9pBfj_LmDthyiydpfyy3bftchOmg&callback=myMap"></script>
 </body>
 </html>
