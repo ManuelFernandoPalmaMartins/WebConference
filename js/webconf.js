@@ -154,6 +154,36 @@ contactForm.addEventListener("submit", async function() {
     // Exibir modal com o erro
   }
 });
+function myMap() {
+  // Ponto no mapa a localizar (cidade do Porto)
+  const porto = new google.maps.LatLng(41.14961  , -8.61099)
+  // Propriedades do mapa
+  const mapProp = {
+    center:porto, 
+    zoom:12, 
+    scrollwheel:false, 
+    draggable:false, 
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  }
+  // Mapa  
+  const map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  // Janela de informação (info window)
+  const infowindow = new google.maps.InfoWindow({
+    content: "É aqui a WebConference!"
+  })
+  // Marcador
+  const marker = new google.maps.Marker({
+    position:porto,
+    map:map,
+    title:"WebConference"
+  })
+  // Listener
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  })
+}
+
+
 
 
 
