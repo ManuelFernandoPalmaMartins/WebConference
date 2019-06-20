@@ -1,8 +1,9 @@
+const urlBase = "https://fcawebbook.herokuapp.com"
 window.onload = () => {
+    // References to HTML objects   
+    const btnParticipant = document.getElementById("btnParticipant")
+    const tblParticipants = document.getElementById("tblParticipants")
     const renderParticipants = async () => {
-        const urlBase = "https://fcawebbook.herokuapp.com"
-        // References to HTML objects
-        const tblParticipants = document.getElementById("tblParticipants")
         let strHtml = `
             <thead >
                 <tr><th class='w-100 text-center bg-warning' colspan='4'>Lista de Participantes</th></tr>
@@ -28,7 +29,7 @@ window.onload = () => {
         }
         strHtml += "</tbody>"
         tblParticipants.innerHTML = strHtml
-        // Manage click delete
+        // Manage click delete        
         const btnDelete = document.getElementsByClassName("remove")
         for (let i = 0; i < btnDelete.length; i++) {
             btnDelete[i].addEventListener("click", () => {
@@ -41,22 +42,21 @@ window.onload = () => {
                     cancelButtonColor: '#d33',
                     cancelButtonText: 'Cancelar',
                     confirmButtonText: 'Remover'
-                    }).then( async (result) => {
-                        if (result.value) {
-                            // Pedido HTTP para remoção de inscrição
-                            let participantId = btnDelete[i].getAttribute("id")
-                            try {
-                                const response = await fetch(`${urlBase}/conferences/1/participants/${participantId}`, { method: "DELETE"})
-                                const isRemoved = await response.json()
-                                swal('Remoção de Inscrição',isRemoved.message.pt,(isRemoved.success)? 'success':'error')
-                                renderParticipants()
-                            } catch (err) {
-                                swal({type: 'error', title: 'Remoção de Inscrição', text: err})
-                            }
+                  }).then( async (result) => {
+                    if (result.value) {                        
+                        let participantId = btnDelete[i].getAttribute("id")
+                        try {
+                            const response = await fetch(`${urlBase}/conferences/1/participants/${participantId}`, { method: "DELETE"})
+                            const participants = await response.json()                            
+                            swal('Removido!','O participante foi removido da Conferência.','success')
+                            renderParticipants()
+                        } catch(err) {
+                            swal({type: 'error', title: 'Erro', text: err})
                         }
-                    })
+                    } 
+                  })
             })
-        }
+        }       
     }
-    renderParticipants()
+ renderParticipants()
 }
